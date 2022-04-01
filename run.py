@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Response, FastAPI
+from fastapi import Response, FastAPI
 from random import choice
 import uvicorn
 
@@ -6,9 +6,11 @@ app = FastAPI()
 
 @app.get("/getServiceTagbySN")
 def getServiceTagbySN(sn: str):
+    test = sn
     sn = choice([sn, "8R33926O00QS", "2LCYHS2", "JQ8F2W2", "", "TR50278"])
     media_type = choice(["text/xml", "application/json"])
-    if sn == "TR30582":
+    if test == "TR50278":
+        sn = "JQ8F2W2"
         media_type = "text/xml"
     if media_type == "text/xml":
         data = '<?xml version="1.0" encoding="utf-8"?>'
